@@ -171,7 +171,7 @@ setInterval(updating_time, 1000);
 
 //Certificates loading Screen
 
-gsap.to(".l_texts", {
+gsap.to([".l_texts", ".images"], {
   scrollTrigger: {
     trigger: "#skills",
     pin: true,
@@ -182,33 +182,4 @@ gsap.to(".l_texts", {
   },
   y: "-300%",
   ease: Power1,
-});
-// gsap.to(".images", {
-//   scrollTrigger: {
-//     trigger: "#skills",
-//     pin: true,
-//     start: "top top",
-//     end: "bottom bottom",
-//     scrub: 1,
-//   },
-//   y: "-5%",
-//   ease: Power1,
-// });
-let sections = document.querySelectorAll(".l_texts");
-
-Shery.imageEffect(".images", {
-  style: 5,
-  config: { onMouse: { value: 1 } },
-  slideStyle: (setScroll) => {
-    sections.forEach(function (section, idx) {
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        scrub: 1,
-        onUpdate: function (dets) {
-          setScroll(dets.progress + idx);
-        },
-      });
-    });
-  },
 });
