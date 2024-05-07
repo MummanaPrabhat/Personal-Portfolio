@@ -1,98 +1,12 @@
-// function circleMouseFollower() {
-//   window.addEventListener("mousemove", function (dets) {
-//     document.querySelector(
-//       "#animated_circle"
-//     ).style.transform = `translate(${dets.clientX}px, ${dets.clientY}px)`;
-//   });
-// }
+// gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-// circleMouseFollower();
-
-// /**
-// //  * YouTube Tutorial:
-// //  * https://youtu.be/wG_5453Vq98
-// //  */
-
-// console.clear();
-
-// // Select the circle element
-// const circleElement = document.querySelector("#animated_circle");
-
-// // Create objects to track mouse position and custom cursor position
-// const mouse = { x: 0, y: 0 }; // Track current mouse position
-// const previousMouse = { x: 0, y: 0 }; // Store the previous mouse position
-// const circle = { x: 0, y: 0 }; // Track the circle position
-
-// // Initialize variables to track scaling and rotation
-// let currentScale = 0; // Track current scale value
-// let currentAngle = 0; // Track current angle value
-
-// // Update mouse position on the 'mousemove' event
-// window.addEventListener("mousemove", (e) => {
-//   mouse.x = e.x;
-//   mouse.y = e.y;
-// });
-
-// // Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
-// const speed = 0.17;
-
-// // Start animation
-// const tick = () => {
-//   // MOVE
-//   // Calculate circle movement based on mouse position and smoothing
-//   circle.x += (mouse.x - circle.x) * speed;
-//   circle.y += (mouse.y - circle.y) * speed;
-//   // Create a transformation string for cursor translation
-//   const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
-
-//   // SQUEEZE
-//   // 1. Calculate the change in mouse position (deltaMouse)
-//   const deltaMouseX = mouse.x - previousMouse.x;
-//   const deltaMouseY = mouse.y - previousMouse.y;
-//   // Update previous mouse position for the next frame
-//   previousMouse.x = mouse.x;
-//   previousMouse.y = mouse.y;
-//   // 2. Calculate mouse velocity using Pythagorean theorem and adjust speed
-//   const mouseVelocity = Math.min(
-//     Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4,
-//     150
-//   );
-//   // 3. Convert mouse velocity to a value in the range [0, 0.5]
-//   const scaleValue = (mouseVelocity / 150) * 0.5;
-//   // 4. Smoothly update the current scale
-//   currentScale += (scaleValue - currentScale) * speed;
-//   // 5. Create a transformation string for scaling
-//   const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
-
-//   // ROTATE
-//   // 1. Calculate the angle using the atan2 function
-//   const angle = (Math.atan2(deltaMouseY, deltaMouseX) * 180) / Math.PI;
-//   // 2. Check for a threshold to reduce shakiness at low mouse velocity
-//   if (mouseVelocity > 20) {
-//     currentAngle = angle;
-//   }
-//   // 3. Create a transformation string for rotation
-//   const rotateTransform = `rotate(${currentAngle}deg)`;
-
-//   // Apply all transformations to the circle element in a specific order: translate -> rotate -> scale
-//   circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
-
-//   // Request the next frame to continue the animation
-//   window.requestAnimationFrame(tick);
-// };
-
-// // Start the animation loop
-// tick();
-
-// Shery JS usage of Mouse Move and Mouse Magnet effects Pretty Handy It seems lol
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+});
 
 Shery.mouseFollower();
 
 Shery.makeMagnet(".magnet");
-
-Shery.hoverWithMediaCircle(".vid", {
-  videos: ["./static/Videos/Naruto Homework.mp4"],
-});
 
 function main_page_animation() {
   var tl = gsap.timeline();
@@ -176,10 +90,59 @@ gsap.to([".l_texts", ".images"], {
     trigger: "#skills",
     pin: true,
     start: "top top",
-    end: "bottom bottom",
+    // end: "bottom bottom",
     endTrigger: ".last",
     scrub: 1,
   },
   y: "-300%",
   ease: Power1,
 });
+
+// Menu bar
+
+const menuText = document.querySelector(".menu");
+const menuPop = document.getElementById("menu_texts");
+let b = 0;
+
+function showMenu() {
+  menuPop.style.opacity = 1;
+  gsap.from(menuPop, {
+    opacity: 0,
+    duration: 0.5,
+    ease: Power3,
+  });
+}
+
+function hideMenu() {
+  gsap.to(menuPop, {
+    opacity: 0,
+    duration: 0.5,
+    ease: Power3,
+    onComplete: () => {
+      menuPop.style.opacity = 0; // Set opacity to 0 once animation completes
+    },
+  });
+}
+
+menuPop.addEventListener("click", () => {
+  v = 1;
+});
+
+menuText.addEventListener("click", () => {
+  event.preventDefault(); // Prevent default link behavior
+  if (menuPop.style.opacity === "0") {
+    showMenu();
+  } else {
+    hideMenu();
+  }
+});
+
+window.addEventListener("scroll", () => {
+  if (v == 1) {
+    v = 0;
+  } else {
+    hideMenu();
+  }
+});
+
+

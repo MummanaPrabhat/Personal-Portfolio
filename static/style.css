@@ -10,18 +10,8 @@ html {
   height: 100%;
   font-family: "Lora", serif;
   cursor: crosshair;
-  background-color: black;
+  /* background-color: black; */
 }
-
-/* #animated_circle {
-  transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  background-color: #fff;
-  border-radius: 50%;
-  z-index: 2;
-} */
 
 #main {
   width: 100%;
@@ -40,6 +30,7 @@ html {
   position: fixed;
   top: 0;
   left: 0;
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,9 +48,41 @@ html {
   font-size: 18px;
 }
 
+#menu_texts {
+  opacity: 0;
+  position: absolute;
+  right: 7%;
+}
+
+#menu_texts a {
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  margin-right: 30px;
+  /* background-color: #fff; */
+}
+
+#menu_texts a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  height: 1.5px;
+  border-radius: 7px;
+  left: 0;
+  bottom: -8%;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+#menu_texts a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
 .hide {
   width: fit-content;
-  /* background-color: rgb(131, 131, 74); */
   overflow: hidden;
 }
 
@@ -87,7 +110,6 @@ html {
   align-items: end;
   margin-left: 10%;
   width: fit-content;
-  /* background-color: antiquewhite; */
 }
 
 #heading .block h5 {
@@ -131,16 +153,31 @@ html {
 }
 
 #heading_footer a {
+  position: relative;
   letter-spacing: 0.18vw;
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
 }
 
-/* #heading_footer img {
-  background-color: #888;
-  color: #fff;
-} */
+#heading_footer a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  height: 1.5px;
+  border-radius: 7px;
+  left: 0;
+  bottom: -8%;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+#heading_footer a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
 
 #icons_set {
   display: flex;
@@ -161,13 +198,10 @@ html {
   padding-right: 10vw;
   padding-top: 160px;
   width: 100%;
-  /* height: 100vh; */
-  /* background-color: black; */
   color: #fff;
   padding-left: 2vh;
 }
 #second > h1 {
-  /* font-family: "Poppins", sans-serif; */
   font-size: 5.2vw;
   opacity: 0.8;
   padding-bottom: 18vh;
@@ -207,7 +241,6 @@ html {
 
 .element img {
   opacity: 0;
-  /* display: none; */
   height: 250px;
   pointer-events: none;
   z-index: 1;
@@ -220,11 +253,9 @@ html {
 }
 
 #third {
-  /* position: relative; */
   padding-right: 10vw;
   padding-top: 12vw;
   width: 100%;
-  /* height: 100vh; */
   background-color: black;
   color: #fff;
   padding-left: 2vh;
@@ -249,7 +280,6 @@ html {
   padding: 8vh;
   height: 100vh;
   border-color: white;
-  /* padding: 0vw 15vw; */
 }
 
 #left_text {
@@ -259,12 +289,8 @@ html {
   line-height: 1.5;
   font-weight: 400;
   text-transform: capitalize;
-  font-family: "Poppins", sans-serif;
-  font-size: 3.1vh;
-  /* letter-spacing: 1px; */
+  font-family: "Poppins", sans-ser;
   opacity: 0.8;
-  /* border: 1px solid white; */
-  /* background-color: #888; */
 }
 
 .l_texts {
@@ -279,7 +305,6 @@ html {
   overflow: hidden;
   width: 45%;
   height: inherit;
-  border: 1px solid white;
 }
 
 #right_certifications .images {
@@ -290,13 +315,12 @@ html {
   width: 100%;
   height: 100%;
   padding-top: 10%;
-  /* margin-top: 28%; */
 }
 
 #right_certifications .images img {
   width: 100%;
   height: 345px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 #about {
@@ -341,6 +365,7 @@ html {
 }
 
 #footer {
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -358,6 +383,7 @@ html {
 }
 
 #footer-right a {
+  position: relative;
   color: #fff;
   font-weight: 500;
   text-decoration: none;
@@ -369,10 +395,10 @@ html {
   position: absolute;
   width: 100%;
   background-color: #fff;
-  height: 3px;
+  height: 1.5px;
   border-radius: 7px;
   left: 0;
-  bottom: -36%;
+  bottom: -8%;
   transform-origin: right;
   transform: scaleX(0);
   transition: transform 0.4s;
