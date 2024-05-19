@@ -102,7 +102,7 @@ gsap.to([".l_texts", ".images"], {
 
 const menuText = document.querySelector(".menu");
 const menuPop = document.getElementById("menu_texts");
-let b = 0;
+let v = 0;
 
 function showMenu() {
   menuPop.style.opacity = 1;
@@ -128,7 +128,7 @@ menuPop.addEventListener("click", () => {
   v = 1;
 });
 
-menuText.addEventListener("click", () => {
+menuText.addEventListener("click", (event) => {
   event.preventDefault(); // Prevent default link behavior
   if (menuPop.style.opacity === "0") {
     showMenu();
@@ -144,5 +144,3 @@ window.addEventListener("scroll", () => {
     hideMenu();
   }
 });
-
-
